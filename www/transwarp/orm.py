@@ -11,6 +11,7 @@ import time, logging
 
 import db
 
+
 class Field(object):
 
     _count = 0
@@ -39,6 +40,7 @@ class Field(object):
         s.append('>')
         return ''.join(s)
 
+
 class StringField(Field):
 
     def __init__(self, **kw):
@@ -47,6 +49,7 @@ class StringField(Field):
         if not 'ddl' in kw:
             kw['ddl'] = 'varchar(255)'
         super(StringField, self).__init__(**kw)
+
 
 class IntegerField(Field):
 
@@ -57,6 +60,7 @@ class IntegerField(Field):
             kw['ddl'] = 'bigint'
         super(IntegerField, self).__init__(**kw)
 
+
 class FloatField(Field):
 
     def __init__(self, **kw):
@@ -65,6 +69,7 @@ class FloatField(Field):
         if not 'ddl' in kw:
             kw['ddl'] = 'real'
         super(FloatField, self).__init__(**kw)
+
 
 class BooleanField(Field):
 
@@ -75,6 +80,7 @@ class BooleanField(Field):
             kw['ddl'] = 'bool'
         super(BooleanField, self).__init__(**kw)
 
+
 class TextField(Field):
 
     def __init__(self, **kw):
@@ -84,6 +90,7 @@ class TextField(Field):
             kw['ddl'] = 'text'
         super(TextField, self).__init__(**kw)
 
+
 class BlobField(Field):
 
     def __init__(self, **kw):
@@ -92,6 +99,7 @@ class BlobField(Field):
         if not 'ddl' in kw:
             kw['ddl'] = 'blob'
         super(BlobField, self).__init__(**kw)
+
 
 class VersionField(Field):
 
@@ -114,6 +122,7 @@ def _gen_sql(table_name, mappings):
     sql.append('  primary key(`%s`)' % pk)
     sql.append(');')
     return '\n'.join(sql)
+
 
 class ModelMetaclass(type):
     '''
@@ -166,6 +175,7 @@ class ModelMetaclass(type):
             if not trigger in attrs:
                 attrs[trigger] = None
         return type.__new__(cls, name, bases, attrs)
+
 
 class Model(dict):
     '''
