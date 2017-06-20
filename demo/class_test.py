@@ -2,6 +2,24 @@
 # __author__='Administrator'
 
 
+class Students(object):
+    def get_score(self):
+        print self._score
+
+    def set_score(self, score):
+        if not isinstance(score, int):
+            raise ValueError('score must be integer')
+        if score > 100 or score < 0:
+            raise ValueError('score must between 0 - 100')
+        self._score = score
+
+s = Students()
+s.set_score(99)
+s.get_score()
+
+
+
+'''
 class Field(object):
 
     _count = 0
@@ -15,7 +33,7 @@ class Field(object):
         self.insertable = kw.get('insertable', True)
         self.ddl = kw.get('ddl', '')
         self._order = Field._count
-        Field._count = Field._count + 1
+        Field._count += 1
 
     @property
     def default(self):
@@ -35,3 +53,4 @@ class Field(object):
 f = Field()
 f.__str__()
 
+'''
