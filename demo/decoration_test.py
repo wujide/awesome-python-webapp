@@ -15,7 +15,22 @@ class Students(object):
             raise ValueError('score must between 0 ~ 100!')
         self._score = value
 
+    @property
+    def birth(self):
+        return self._birth
+
+    @birth.setter
+    def birth(self, value):
+        self._birth = value
+
+    @property
+    def age(self):
+        return 2014 - self._birth
 
 s = Students()
 s.score = 99
-print s.score
+print "s.score:", s.score
+
+s.birth = 2000
+print "s.age:", s.age
+
