@@ -25,12 +25,22 @@ class Students(object):
 
     @property
     def age(self):
-        return 2014 - self._birth
+        # return 2014 - self._birth
+        return self._age
+
+    @age.setter
+    def age(self, value):
+        self._age = value
 
 s = Students()
 s.score = 99
 print "s.score:", s.score
 
+''''
 s.birth = 2000
 print "s.age:", s.age
 
+'''
+
+s.age = 23
+print "s.age:", s.age
