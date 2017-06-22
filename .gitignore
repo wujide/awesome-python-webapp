@@ -7,7 +7,7 @@ __pycache__/
 
 
 .idea/
-/demo/user_pwd
+user_pwd
 
 
 # Distribution / packaging
