@@ -24,6 +24,15 @@ print m.group(0)
 print m.group(1)
 print m.group(2)
 
+# findall
+reg_2 = r"\(?0\d{2,3}[) -]?\d{7,8}"
+txt_2 = '(021)88776543 010-55667890 02584533622 057184720483 837922740'
+tel_find = re.findall(reg_2, txt_2)
+if tel_find:
+    print "tel_find:", tel_find
+else:
+    print "nothing find"
+
 # 先编译
 re_telephone = re.compile(r'^(\d{3})-(\d{3,8})$')
 print re_telephone.match('012-34567').groups()
