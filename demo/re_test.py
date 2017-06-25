@@ -33,7 +33,16 @@ if tel_find:
 else:
     print "nothing find"
 
+
+email = 'test@test.com test.test@test.com _123@123.com 3434@123.456.cn 456@456.me '
+reg_3 = r'\w+[\w.]*@[\w.]+\.\w+ '
+email_find = re.findall(reg_3, email)
+if email_find:
+    print "email_find:", email_find
+else:
+    print "no email found"
+
+
 # 先编译
 re_telephone = re.compile(r'^(\d{3})-(\d{3,8})$')
 print re_telephone.match('012-34567').groups()
-
