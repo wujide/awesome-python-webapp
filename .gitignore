@@ -8,6 +8,7 @@ __pycache__/
 
 .idea/
 info/user_pwd
+demo/py_test_temp.py
 
 
 # Distribution / packaging
