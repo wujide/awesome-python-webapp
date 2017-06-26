@@ -25,15 +25,16 @@ print m.group(1)
 print m.group(2)
 
 # findall
-reg_2 = r"\(?0\d{2,3}[) -]?\d{7,8}"
-txt_2 = '(021)88776543 010-55667890 02584533622 057184720483 837922740'
+# tel_find: ['(021)88776543', '010-55667890', '02584533622', '057184720483', '83792274']
+reg_2 = r"\(?0\d{2,3}[) -]?\d{7,8}|\d{7,8}"
+txt_2 = '(021)88776543 010-55667890 02584533622 057184720483 83792274'
 tel_find = re.findall(reg_2, txt_2)
 if tel_find:
     print "tel_find:", tel_find
 else:
     print "nothing find"
 
-
+# email_find: ['test@test.com ', 'test.test@test.com ', '_123@123.com ', '3434@123.456.cn ', '456@456.me ']
 email = 'test@test.com test.test@test.com _123@123.com 3434@123.456.cn 456@456.me '
 reg_3 = r'\w+[\w.]*@[\w.]+\.\w+ '
 email_find = re.findall(reg_3, email)
@@ -42,7 +43,23 @@ if email_find:
 else:
     print "no email found"
 
+# findfilter() 返回的是迭代器
+# result：
+'''
+hello
+world
+'''
+for fl in re.finditer('\w+', 'hello, world!'):
+    print fl.group()
+
+# start([group])
+email_bef_rm = "tony@tiremove_thisger.net"
+m = re.search("remove_this", email_bef_rm)
+email_after_rm = email_bef_rm[:m.start()] + email_bef_rm[m.end():]
+print "email_after_rm:", email_after_rm
+
+
 
 # 先编译
 re_telephone = re.compile(r'^(\d{3})-(\d{3,8})$')
-print re_telephone.match('012-34567').groups()
+print re_telephone.match('012-34567').group()
