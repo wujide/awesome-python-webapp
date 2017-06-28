@@ -4,10 +4,17 @@
 import re
 
 # match 匹配
-reg = r'^\d{3}\-\d{3,8}'
-tel = '021-12345'
+reg = r'\d{3}\-\d{3,8}'
+tel = '0021-123456789'
 if re.match(reg, tel):
     print 'It\'s matched !'
+else:
+    print "No"
+
+# search 匹配
+reg_search = r'\d{3}\-\d{3,8}'
+if re.search(reg_search, tel):
+    print 'It\'s searched !'
 else:
     print "No"
 
@@ -63,3 +70,9 @@ print "email_after_rm:", email_after_rm
 # 先编译
 re_telephone = re.compile(r'^(\d{3})-(\d{3,8})$')
 print re_telephone.match('012-34567').group()
+
+
+# re.I
+re_str = re.compile(r'\w+ab', re.I)
+for str_ignore in re_str.finditer( 'aab,Aab,bAB,bAc'):
+    print str_ignore.group(),
