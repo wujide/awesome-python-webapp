@@ -50,14 +50,13 @@ if email_find:
 else:
     print "no email found"
 
-# findfilter() 返回的是迭代器
+# finditer() 返回的是迭代器
 # result：
 '''
-hello
-world
+hello world
 '''
 for fl in re.finditer('\w+', 'hello, world!'):
-    print fl.group()
+    print fl.group(),
 
 # start([group])
 email_bef_rm = "tony@tiremove_thisger.net"
@@ -66,13 +65,18 @@ email_after_rm = email_bef_rm[:m.start()] + email_bef_rm[m.end():]
 print "email_after_rm:", email_after_rm
 
 
-
 # 先编译
 re_telephone = re.compile(r'^(\d{3})-(\d{3,8})$')
 print re_telephone.match('012-34567').group()
-
+print '\n'
 
 # re.I
 re_str = re.compile(r'\w+ab', re.I)
-for str_ignore in re_str.finditer( 'aab,Aab,bAB,bAc'):
+for str_ignore in re_str.finditer('aab,Aab,bAB,bAc'):
     print str_ignore.group(),
+print '\n'
+
+# sub & subn
+p = re.compile('(one|two|three)')
+print p.sub('num', 'one word two words three words apple', 2)
+print p.subn('num', 'one word two words three words apple', 2)
