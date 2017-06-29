@@ -20,16 +20,17 @@ else:
 
 # split 切分
 s = 'a, b   c;; d'
-print re.split(r'[\s\,\;]+', s)
+print "s_split:", re.split(r'[\s,;]+', s)
 
 
 # group 分组
 reg_1 = r'(\d{3})-(\d{3,8})$'
 txt = '123-456789'
 m = re.match(reg_1, txt)
-print m.group(0)
-print m.group(1)
-print m.group(2)
+print "groups:", m.groups()
+print "group():", m.group()
+print "group(1):", m.group(1)
+print "group(2):", m.group(2)
 
 # findall
 # tel_find: ['(021)88776543', '010-55667890', '02584533622', '057184720483', '83792274']
@@ -51,12 +52,11 @@ else:
     print "no email found"
 
 # finditer() 返回的是迭代器
-# result：
-'''
-hello world
-'''
-for fl in re.finditer('\w+', 'hello, world!'):
-    print fl.group(),
+# result：hello world
+print "fi.group(): "
+for fi in re.finditer('\w+', 'hello, world!'):
+    print fi.group(),
+print '\n'
 
 # start([group])
 email_bef_rm = "tony@tiremove_thisger.net"
