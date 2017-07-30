@@ -18,13 +18,26 @@ if __name__ == '__main__':
     baidu_func(url)
 '''
 
+with open(r'../info/user_pwd', 'r') as f:
+    lines = f.readline()
+    lines_strip = lines.split()
+    phoneNum = lines_strip[0].split('=')[1]
+    loginpwd = lines_strip[1].split('=')[1]
+
+with open(r'../info/url', 'r') as f_url:
+    lines = f_url.readline()
+    print lines
+    lines_strip = lines.split('=')
+    url_login = lines_strip[1]
+
 
 # login test
 def login_test(url):
-    data = json.dumps({'phoneNum': 13800138000, 'loginpwd': '123456abcd'})
+    data = json.dumps({'phoneNum': phoneNum, 'loginpwd': loginpwd})
     req = requests.post(url, data)
     print req.json
+    print req
 
 if __name__ == '__main__':
-    url = "https://app.91yaowang.com/app/webservice/v2/member/login"
+    url = url_login
     login_test(url)
