@@ -33,10 +33,13 @@ with open(r'../info/url', 'r') as f_url:
 
 # login test
 def login_test(url):
-    data = json.dumps({'phoneNum': phoneNum, 'loginpwd': loginpwd})
-    req = requests.post(url, data)
+    # data = json.dumps({'phoneNum': phoneNum, 'loginpwd': loginpwd})
+    data = 'phoneNum='+ phoneNum +'&'+ 'loginpwd='+ loginpwd
+    print "data", data
+    req = requests.post(url, data, verify=False)
     print req.json
-    print req
+    print "req:", req
+    print "req.status:", req.response
 
 if __name__ == '__main__':
     url = url_login

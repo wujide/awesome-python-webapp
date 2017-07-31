@@ -11,3 +11,6 @@ def send_request(url):
 
 def visit_ustack():
     return send_request('https://www.baidu.com')
+
+if __name__ == "__main__":
+    print visit_ustack()
