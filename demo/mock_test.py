@@ -23,8 +23,7 @@ class TestClient(unittest.TestCase):
     def test_call_send_request_with_right_arguments(self):
         client.send_request = mock.Mock()
         client.visit_ustack()
-        if self.assertEqual(client.send_request.called, True):
-            print "called"
+        self.assertEqual(client.send_request.called, True)
         call_args = client.send_request.call_args
         self.assertIsInstance(call_args[0][0], str)
         print call_args[0][0]
