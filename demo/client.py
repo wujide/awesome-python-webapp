@@ -9,8 +9,9 @@ def send_request(url):
     return r.status_code
 
 
-def visit_ustack():
-    return send_request('https://www.baidu.com')
+def visit_baidu(url='https://www.baidu.com'):
+    return send_request(url)
 
 if __name__ == "__main__":
-    print visit_ustack()
+    url = 'https://www.baidu.com'
+    print visit_baidu(url)
