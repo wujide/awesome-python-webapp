@@ -6,6 +6,7 @@ import requests
 
 def send_request(url):
     r = requests.get(url, verify=False)
+    print r.status_code
     return r.status_code
 
 
@@ -14,4 +15,4 @@ def visit_baidu(url='https://www.baidu.com'):
 
 if __name__ == "__main__":
     url = 'https://www.baidu.com'
-    print visit_baidu(url)
+    visit_baidu(url)
