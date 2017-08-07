@@ -5,7 +5,7 @@ from flask import Flask, jsonify
 import json
 
 app = Flask(__name__)
-data = {"name": "Tacey", "age": 13, "sex": "male", "interst": ("Programing", "Reading")}
+data = {"name": "Tacey", "age": 13, "sex": "male", "interest": ("Programing", "Reading")}
 
 # json.dumps
 json_data = json.dumps(data)
