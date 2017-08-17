@@ -17,7 +17,7 @@ if __name__ == '__main__':
     url = "http://www.baidu.com"
     baidu_func(url)
 '''
-
+'''
 with open(r'../info/user_pwd', 'r') as f:
     lines = f.readline()
     lines_strip = lines.split()
@@ -40,7 +40,17 @@ def login_test(url):
     print req.json
     print "req:", req
     print "req.status:", req.response
+'''
+
+def simple_demo():
+    session = requests.Session()
+    session.headers = {'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 8_0 like Mac OS X) AppleWebKit/600.1.3 (KHTML, like Gecko) Version/8.0 Mobile/12A4345d Safari/600.1.4'}
+    session.get('https://xueqiu.com', verify=False)
+    r = session.get('https://xueqiu.com/stock/f10/finmainindex.json?symbol=SZ000001&page=1&size=1', verify=False)
+    print r.text
+
 
 if __name__ == '__main__':
-    url = url_login
-    login_test(url)
+    # url = url_login
+    # login_test(url)
+    simple_demo()
