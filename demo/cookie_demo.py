@@ -14,6 +14,13 @@ for item in cookie:
     print "Name = " + item.name
     print "value = " + item.value
 
-
+#从文件中读取cookie内容到变量
+cookie.load('cookie.txt', ignore_discard=True, ignore_expires=True)
+#创建请求的request
+req = urllib2.Request(url)
+#利用urllib2的build_opener方法创建一个opener
+opener_file = urllib2.build_opener(handle)
+response_file = opener_file.open(req)
+print response_file.read()
 
 
