@@ -18,6 +18,7 @@ def login():
     data = urllib.urlencode(values)
     req = urllib2.Request(url)
     response = urllib2.urlopen(req, data)
+    # todo: 添加把loginToken 读取并写入info/loginToken 的代码
     print response.read()
 
 
