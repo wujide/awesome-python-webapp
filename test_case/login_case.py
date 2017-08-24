@@ -4,6 +4,9 @@
 import urllib
 import urllib2
 
+from flask import json
+
+
 with open(r'../info/user_pwd', 'r') as f:
     lines_strip = f.readline().split()
     phoneNum = lines_strip[0].split('=')[1]
@@ -19,7 +22,12 @@ def login():
     req = urllib2.Request(url)
     response = urllib2.urlopen(req, data)
     # todo: 添加把loginToken 读取并写入info/loginToken 的代码
-    print response.read()
+    # print response.read()
+    date_return = json.load(response)
+    # print date_return
+    # print type(date_return)
+    print "loginToken = ", date_return['data']['loginToken']
+
 
 
 # get方法，貌似不允许
