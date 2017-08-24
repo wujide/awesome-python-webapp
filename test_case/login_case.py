@@ -24,12 +24,13 @@ def login():
     data = urllib.urlencode(values)
     req = urllib2.Request(url)
     response = urllib2.urlopen(req, data)
-    # print response.read()
+    print response.read()
+    # 序列化并保存到文件中
     date_return = json.load(response)
     # print date_return
     # print type(date_return)
     loginToken = date_return['data']['loginToken']
-    print "loginToken = ", loginToken
+    # print "loginToken = ", loginToken
     # d = dict(loginToken=loginToken)
     write_to_file(date_return)
 
