@@ -17,6 +17,12 @@ with open(r'../info/user_pwd', 'r') as f:
     print "phoneNum, loginpwd:", phoneNum, loginpwd
 
 
+def data_get():
+    with open(r'../info/user_pwd', 'r') as f:
+        d = pickle.load(f)
+        return d['phoneNum'], d['loginpwd']
+
+
 # post
 def login():
     url = 'https://app.91yaowang.com/app/webservice/v2/member/login'
@@ -27,12 +33,12 @@ def login():
     print response.read()
     # 序列化并保存到文件中
     date_return = json.load(response)
+    write_to_file(date_return)
     # print date_return
     # print type(date_return)
     loginToken = date_return['data']['loginToken']
     # print "loginToken = ", loginToken
     # d = dict(loginToken=loginToken)
-    write_to_file(date_return)
 
 
 def write_to_file(data):
@@ -53,5 +59,6 @@ def login_get():
 
 
 if __name__ == "__main__":
-    login()
+    # login()
     # login_get()
+    data_get()
