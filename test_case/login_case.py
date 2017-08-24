@@ -1,11 +1,14 @@
 # coding=utf-8
 # __author__='wujide'
-
+import os
 import urllib
 import urllib2
 
 from flask import json
-
+try:
+    import cPickle as pickle
+except ImportError:
+    import pickle
 
 with open(r'../info/user_pwd', 'r') as f:
     lines_strip = f.readline().split()
@@ -21,13 +24,19 @@ def login():
     data = urllib.urlencode(values)
     req = urllib2.Request(url)
     response = urllib2.urlopen(req, data)
-    # todo: 添加把loginToken 读取并写入info/loginToken 的代码
     # print response.read()
     date_return = json.load(response)
     # print date_return
     # print type(date_return)
-    print "loginToken = ", date_return['data']['loginToken']
+    loginToken = date_return['data']['loginToken']
+    print "loginToken = ", loginToken
+    # d = dict(loginToken=loginToken)
+    write_to_file(date_return)
 
+
+def write_to_file(data):
+    with open(r'../data/loginToken', 'w+') as f:
+        pickle.dump(data, f)
 
 
 # get方法，貌似不允许
