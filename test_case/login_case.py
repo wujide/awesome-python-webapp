@@ -3,12 +3,8 @@
 import os
 import urllib
 import urllib2
-
-from flask import json
-try:
-    import cPickle as pickle
-except ImportError:
-    import pickle
+import cPickle
+from flask import json, jsonify
 
 with open(r'../info/user_pwd', 'r') as f:
     lines_strip = f.readline().split()
@@ -16,11 +12,20 @@ with open(r'../info/user_pwd', 'r') as f:
     loginpwd = lines_strip[1].split('=')[1]
     print "phoneNum, loginpwd:", phoneNum, loginpwd
 
+try:
+    import cPickle as pickle
+except ImportError:
+    import pickle
+
 
 def data_get():
-    with open(r'../info/user_pwd', 'r') as f:
-        d = pickle.load(f)
-        return d['phoneNum'], d['loginpwd']
+    with open(r"../info/user_pwd_dict.txt", 'rb') as f:
+        d = f.read()
+        data = json.loads(json.dumps(d))
+        print type(data)
+        print data
+        return data
+
 
 
 # post
@@ -46,19 +51,7 @@ def write_to_file(data):
         pickle.dump(data, f)
 
 
-# get方法，貌似不允许
-def login_get():
-    url_1 = "https://app.91yaowang.com/app/webservice/v2/member/login"
-    values_get = {"phoneNum": "13800138015", "loginpwd": loginpwd}
-    data_get = urllib.urlencode(values_get)
-    url_get = url_1 + "?" + data_get
-    print url_get
-    req_get = urllib2.Request(url_get)
-    response_get = urllib2.urlopen(req_get)
-    print response_get.read()
-
-
 if __name__ == "__main__":
-    # login()
+    login()
     # login_get()
-    data_get()
+    # data_get()
