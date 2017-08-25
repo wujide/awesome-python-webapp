@@ -1,5 +1,6 @@
 # coding=utf-8
 # __author__='wujide'
+import ast
 import os
 import urllib
 import urllib2
@@ -35,20 +36,24 @@ def login():
     data = urllib.urlencode(values)
     req = urllib2.Request(values['url'])
     response = urllib2.urlopen(req, data)
-    print response.read()
+    print type(response)
+    dd = response.read()
+    print type(dd)
+    print dd
     # 序列化并保存到文件中
-    dt = urllib.urlencode(response)
-    date_return = json.load(dt)
-    write_to_file(date_return)
+    dt = urllib.urlencode(eval(dd))
+    # date_return = json.dump(response)
+    write_to_file(dt)
     # print date_return
     # print type(date_return)
-    # loginToken = date_return['data']['loginToken']
-    # print "loginToken = ", loginToken
+    #loginToken = date_return['data']['loginToken']
+    #print "loginToken = ", loginToken
     # d = dict(loginToken=loginToken)
 
 
 def write_to_file(data):
-    with open(r'../data/loginToken', 'w+') as f:
+    with open(r'../data/loginToken', 'wb+') as f:
+        print data
         pickle.dump(data, f)
 
 
