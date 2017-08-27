@@ -41,20 +41,16 @@ def login():
     print "type(dd):", type(dd)
     print dd
     # 序列化并保存到文件中
-    dt = urllib.urlencode(eval(dd))
+    # dt = urllib.urlencode(eval(dd))
     # date_return = json.dump(response)
-    write_to_file(dt)
-    # print date_return
-    # print type(date_return)
-    #loginToken = date_return['data']['loginToken']
-    #print "loginToken = ", loginToken
-    # d = dict(loginToken=loginToken)
+    write_to_file(dd)
 
 
 def write_to_file(data):
     with open(r'../data/loginToken', 'wb+') as f:
-        print data
-        pickle.dump(data, f)
+        dt = json.dumps(data)
+        print dt
+        pickle.dump(dt, f)
 
 
 if __name__ == "__main__":
