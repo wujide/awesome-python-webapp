@@ -33,10 +33,10 @@ def data_get():
 
 def write_to_file(data):
     with open(r'../data/loginToken', 'wb+') as f:
-        # dt = json.dumps(data)
-        # print dt
         print "data:", data
-        pickle.dump(data, f)
+        print "type(eval(data)):", type(eval(data))
+        print "eval(data):", eval(data)
+        json.dump(eval(data), f)
 
 
 def login():

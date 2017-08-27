@@ -25,6 +25,7 @@ except ImportError:
 def loginToken_get():
     with open(r"../data/loginToken", 'r') as f:
         values = f.read()
+        print "type(values):", type(values)
         data = json.dumps(values)
         print data
         d = eval(json.loads(data))
@@ -35,6 +36,6 @@ def loginToken_get():
 
 
 if __name__ == "__main__":
-    # getInvestInfo()
-    loginToken_get()
+    getInvestInfo()
+    # loginToken_get()
 
