@@ -36,9 +36,9 @@ def login():
     data = urllib.urlencode(values)
     req = urllib2.Request(values['url'])
     response = urllib2.urlopen(req, data)
-    print type(response)
+    print "type(response):", type(response)
     dd = response.read()
-    print type(dd)
+    print "type(dd):", type(dd)
     print dd
     # 序列化并保存到文件中
     dt = urllib.urlencode(eval(dd))
