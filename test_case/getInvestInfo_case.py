@@ -24,12 +24,17 @@ except ImportError:
 
 def loginToken_get():
     with open(r"../data/loginToken", 'r') as f:
-        d = pickle.load(f)
+        values = f.read()
+        data = json.dumps(values)
+        print data
+        d = eval(json.loads(data))
+        # d = eval(pickle.load(f))
+        print "type(d):", type(d)
         print d['data']['loginToken']
         return d['data']['loginToken']
 
 
 if __name__ == "__main__":
-    #getInvestInfo()
+    # getInvestInfo()
     loginToken_get()
 

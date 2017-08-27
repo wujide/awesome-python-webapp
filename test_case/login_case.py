@@ -22,12 +22,21 @@ except ImportError:
 def data_get():
     with open(r"../info/user_pwd_dict.txt", 'rb') as f:
         d = f.read()
+        print "type(d)", type(d)
         data = json.dumps(d)
-        # print "type(data):", type(data)
+        print "type(data):", type(data)
         values = eval(json.loads(data))
         # print values['user']
         print "type(values):", type(values)
         return values
+
+
+def write_to_file(data):
+    with open(r'../data/loginToken', 'wb+') as f:
+        # dt = json.dumps(data)
+        # print dt
+        print "data:", data
+        pickle.dump(data, f)
 
 
 def login():
@@ -40,17 +49,8 @@ def login():
     dd = response.read()
     print "type(dd):", type(dd)
     print dd
-    # 序列化并保存到文件中
-    # dt = urllib.urlencode(eval(dd))
-    # date_return = json.dump(response)
     write_to_file(dd)
 
-
-def write_to_file(data):
-    with open(r'../data/loginToken', 'wb+') as f:
-        dt = json.dumps(data)
-        print dt
-        pickle.dump(dt, f)
 
 
 if __name__ == "__main__":
