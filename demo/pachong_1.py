@@ -44,10 +44,12 @@ class QSBK:
         if not pageCode:
             print "页面加载失败...."
             return None
-        pattern = re.compile('<div.*?author">.*?<a.*?<img.*?>(.*?)</a>.*?<div.*?' +
-                             'content">(.*?)<!--(.*?)-->.*?</div>(.*?)<div class="stats.*?class="number">(.*?)</i>',
-                             re.S)
+        pattern = re.compile('<div.*?author.*?">.*?<a.*?<img.*?">(.*?)</a>.*?< div. *?' +
+                             'content"><span>(.*?)</span>.*?<div class="stats. *class ="number" > (.* ?) < / i > ', re.S)
+        # pattern = re.compile('<div.*?author">.*?<a.*?<img.*?>(.*?)</a>.*?<div.*?' +
+        #                     'content">(.*?)<!--(.*?)-->.*?</div>(.*?)<div class="stats.*?class="number">(.*?)</i>', re.S)
         items = re.findall(pattern, pageCode)
+        print "items:", items
         # 用来存储每页的段子们
         pageStories = []
         # 遍历正则表达式匹配的信息
