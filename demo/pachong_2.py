@@ -47,7 +47,10 @@ class BDTB:
             url = self.baseURL + self.seeLZ + '&pn=' + str(pageNum)
             request = urllib2.Request(url)
             response = urllib2.urlopen(request)
-            return response.read().decode('utf-8')
+            with open(r'../data/data_temp/getpage.txt', 'wb+') as f:
+                res_read = response.read()
+                f.write(res_read)
+            return res_read.decode('utf-8')
         except urllib2.URLError, e:
             if hasattr(e, "reason"):
                 print u"连接百度贴吧失败,错误原因", e.reason
@@ -86,4 +89,5 @@ class BDTB:
 
 baseURL = 'http://tieba.baidu.com/p/3138733512'
 bdtb = BDTB(baseURL, 1)
+bdtb.getTitle()
 bdtb.getContent(bdtb.getPage(1))
