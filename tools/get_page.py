@@ -3,17 +3,16 @@
 import urllib2
 
 
-class getPage:
-    def __init__(self, siteURL, para_name, pageIndex):
-        self.url = siteURL + "?" + str(para_name) + "=" + str(pageIndex)
+class GetPage:
+    def __init__(self, url, para_name, pageIndex):
+        self.total_url = url + "?" + str(para_name) + "=" + str(pageIndex)
 
     def getpage(self):
-        url = self.url
-        request = urllib2.Request(url)
+        request = urllib2.Request(self.total_url)
         response = urllib2.urlopen(request)
         print response.read().decode('gbk')
         return response.read().decode('gbk')
 
 url = 'http://mm.taobao.com/json/request_top_list.htm'
-gt = getPage(url, 'page', 1)
+gt = GetPage(url, 'page', 1)
 gt.getpage()

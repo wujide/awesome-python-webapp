@@ -4,7 +4,7 @@
 import urllib
 import urllib2
 import re
-import tool
+import tools.tool
 import os
 
 
@@ -12,8 +12,8 @@ import os
 class Spider:
     # 页面初始化
     def __init__(self):
-        self.siteURL = 'http://mm.taobao.com/json/request_top_list.htm'
-        self.tool = tool.Tool()
+        self.siteURL = 'http://mm.taobao.com/json/request_top_list.html'
+        self.tool = tools.tool.Tool()
 
     # 获取索引页面的内容
     def getPage(self, pageIndex):
