@@ -19,6 +19,15 @@ except ImportError:
     import pickle
 
 
+class para_get:
+    def __init__(self, file_path):
+        self.file_path = file_path
+
+    def data_get(self):
+        pass
+
+
+
 def data_get():
     with open(r"../info/user_pwd_dict.txt", 'rb') as f:
         d = f.read()
@@ -50,7 +59,6 @@ def login():
     print "type(dd):", type(dd)
     print dd
     write_to_file(dd)
-
 
 
 if __name__ == "__main__":
