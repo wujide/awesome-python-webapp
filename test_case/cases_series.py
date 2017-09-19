@@ -2,9 +2,9 @@
 # __author__='Administrator'
 
 import login_case
-import getInvestInfo_case
+import get_invest_info_case
 
 login_case.login()
-getInvestInfo_case.getInvestInfo()
+get_invest_info_case.getInvestInfo()
 
 

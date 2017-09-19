@@ -9,11 +9,6 @@ class ParaGet:
 
     def data_get(self):
         with open(self.file_path, 'rb') as f:
-            d = f.read()
-            print "type(d)", type(d)
-            data = json.dumps(d)
-            print "type(data):", type(data)
-            values = eval(json.loads(data))
-            # print values['user']
-            print "type(values):", type(values)
-            return values
+            values = json.dumps(f.read())  # type(values): <type 'str'>
+            data = eval(json.loads(values))  # type(data): <type 'dict'>
+            return data

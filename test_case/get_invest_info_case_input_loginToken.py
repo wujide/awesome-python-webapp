@@ -1,9 +1,9 @@
 # coding=utf-8
 # __author__='wujide'
-
-
-
+import urllib
+import urllib2
 import para_get
+
 
 def getInvestInfo():
     # 初始化login接口参数
