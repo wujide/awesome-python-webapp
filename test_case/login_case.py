@@ -1,11 +1,8 @@
 # coding=utf-8
 # __author__='wujide'
-import ast
-import os
 import urllib
 import urllib2
-import cPickle
-from flask import json, jsonify
+import para_get
 '''
 with open(r'../info/user_pwd', 'r') as f:
     lines_strip = f.readline().split()
@@ -19,37 +16,11 @@ except ImportError:
     import pickle
 
 
-class para_get:
-    def __init__(self, file_path):
-        self.file_path = file_path
-
-    def data_get(self):
-        pass
-
-
-
-def data_get():
-    with open(r"../info/user_pwd_dict.txt", 'rb') as f:
-        d = f.read()
-        print "type(d)", type(d)
-        data = json.dumps(d)
-        print "type(data):", type(data)
-        values = eval(json.loads(data))
-        # print values['user']
-        print "type(values):", type(values)
-        return values
-
-
-def write_to_file(data):
-    with open(r'../data/loginToken', 'wb+') as f:
-        print "data:", data
-        print "type(eval(data)):", type(eval(data))
-        print "eval(data):", eval(data)
-        json.dump(eval(data), f)
-
-
 def login():
-    values = data_get()
+    # 初始化login接口参数
+    login_case = para_get.ParaGet(r"../info/para_login.txt")
+    # 获取参数
+    values = login_case.data_get()
     # print values
     data = urllib.urlencode(values)
     req = urllib2.Request(values['url'])
@@ -58,8 +29,18 @@ def login():
     dd = response.read()
     print "type(dd):", type(dd)
     print dd
-    write_to_file(dd)
+    #write_to_file(dd)
 
+
+'''
+def write_to_file(data):
+    with open(r'../data/loginToken', 'wb+') as f:
+        print "data:", data
+        print "type(eval(data)):", type(eval(data))
+        print "eval(data):", eval(data)
+        json.dump(eval(data), f)
+
+'''
 
 if __name__ == "__main__":
     login()
