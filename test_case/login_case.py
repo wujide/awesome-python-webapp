@@ -3,7 +3,7 @@
 import urllib
 import urllib2
 from flask import json
-import interface_test
+import interface_test_class
 
 '''
 with open(r'../info/user_pwd', 'r') as f:
@@ -15,16 +15,11 @@ with open(r'../info/user_pwd', 'r') as f:
 
 
 def login():
-    # 初始化login接口参数
-    login_para = interface_test.ParaGet(r"../info/login_case_para.txt")
+    # 初始化login 实例
+    login_obj = interface_test_class.InterfaceTest(r"../info/login_case_para.txt")
     # 获取参数
-    values = login_para.data_get()  # <type 'dict'>
-    response = login_para.data_post(values)
-    '''
-    data = urllib.urlencode(values)  # <type 'str'>
-    req = urllib2.Request(values['url'])
-    response = urllib2.urlopen(req, data)  # <type 'instance'>
-    '''
+    values = login_obj.data_get()  # <type 'dict'>
+    response = login_obj.data_post(values)
     dd = response.read()  # <type 'str'>
     print dd
     write_to_file(dd)

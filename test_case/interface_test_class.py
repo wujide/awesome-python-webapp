@@ -6,7 +6,7 @@ import urllib2
 from flask import json
 
 
-class ParaGet:
+class InterfaceTest:
     def __init__(self, file_path):
         self.file_path = file_path
 
@@ -16,7 +16,8 @@ class ParaGet:
             data = eval(json.loads(values))  # type(data): <type 'dict'>
             return data
 
-    def data_post(self, values):
+    @staticmethod
+    def data_post(values):
         data = urllib.urlencode(values)
         req = urllib2.Request(values['url'])
         response = urllib2.urlopen(req, data)
