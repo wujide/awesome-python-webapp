@@ -2,12 +2,12 @@
 # __author__='wujide'
 import urllib
 import urllib2
-import para_get
+import interface_test
 
 
 def getInvestInfo():
     # 初始化login接口参数
-    getInvestInfo = para_get.ParaGet(r"../info/getInvestInfo_case_para.txt")
+    getInvestInfo = interface_test.ParaGet(r"../info/getInvestInfo_case_para.txt")
     # 获取参数
     values = getInvestInfo.data_get()
     # print values
