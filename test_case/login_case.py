@@ -25,11 +25,9 @@ def login():
     write_to_file(dd)
 
 
+# write result to a file
 def write_to_file(data):
-    with open(r'../data/loginToken', 'wb+') as f:
-        # print "data:", data
-        # print "type(eval(data)):", type(eval(data))
-        # print "eval(data):", eval(data)
+    with open(r'../data/login', 'wb+') as f:
         json.dump(eval(data), f)
 
 if __name__ == "__main__":
