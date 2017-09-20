@@ -21,7 +21,7 @@ def para_get():
     with open(r"../info/url", 'r') as f:
         values = json.dumps(f.read())
         d = eval(json.loads(values))
-        url_get_invest_info = d["url_getInvestInfo"]
+        url_get_invest_info = d['url_getInvestInfo']
     # get the loginToken
     with open(r"../data/login", 'r') as f:
         values = json.dumps(f.read())
