@@ -2,13 +2,13 @@
 # __author__='wujide'
 
 from flask import json
-from test_case import interface_test_class
+from interface_test_class import InterfaceTest
 
 
 def buyProduct():
     para_get()
     para_path = r"../info/buyProduct_case_para.txt"
-    getInvestInfo_obj = interface_test_class.InterfaceTest(para_path)
+    getInvestInfo_obj = InterfaceTest(para_path)
     values = getInvestInfo_obj.data_get()
     response = getInvestInfo_obj.data_post(values)
     data = response.read()  # <type 'str'>

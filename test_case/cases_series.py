@@ -1,11 +1,15 @@
 # coding=utf-8
 # __author__='Administrator'
 
-import login_case
-import get_invest_info_case
+from login_case import login
+from get_invest_info_case import getInvestInfo
+from buy_product_case import buyProduct
 
-login_case.login()
+
+login()
 # 0 元白拿获取投资值和邀请值
-get_invest_info_case.getInvestInfo()
+getInvestInfo()
+# buy product
+buyProduct()
 
 
