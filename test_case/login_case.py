@@ -20,15 +20,21 @@ def login():
     # 获取参数
     values = login_obj.data_get()  # <type 'dict'>
     response = login_obj.data_post(values)
-    dd = response.read()  # <type 'str'>
-    print dd
-    write_to_file(dd)
+    data = response.read()  # <type 'str'>
+    print data
+    file_save = r'../data/login'
+    login_obj.data_save(file_save, data)
+    login_obj.pass_or_fail(file_save)
 
 
-# write result to a file
-def write_to_file(data):
-    with open(r'../data/login', 'wb+') as f:
-        json.dump(eval(data), f)
+def pass_or_fail():
+    with open(r"../data/login", 'r') as f:
+        values = json.dumps(f.read())
+        d = eval(json.loads(values))
+        if d['data']['loginToken']:
+            print "login PASS"
+        else:
+            print "login FAIL"
 
 if __name__ == "__main__":
     login()
