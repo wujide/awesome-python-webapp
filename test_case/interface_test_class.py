@@ -2,7 +2,6 @@
 # __author__='wujide'
 import urllib
 import urllib2
-
 from flask import json
 
 
@@ -35,6 +34,6 @@ class InterfaceTest:
             values = json.dumps(f.read())
             data = eval(json.loads(values))
             if data['status'] == '0':
-                print "%s PASS" %file_path.split("/")[2]
+                print "%s PASS" % file_path.split("/")[2]
             else:
-                print "%s FAIL" %file_path.split("/")[2]
+                print "%s FAIL" % file_path.split("/")[2]

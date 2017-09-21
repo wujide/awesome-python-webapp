@@ -31,7 +31,7 @@ def para_get():
         loginToken = d['data']['loginToken']
     data = {"loginToken": loginToken,
             "url": url_get_invest_info}
-    print data
+    # print data
     # write to a file
     with open(r'../info/getInvestInfo_case_para.txt', 'wb+') as f:
         json.dump(data, f)
