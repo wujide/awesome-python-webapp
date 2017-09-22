@@ -4,6 +4,7 @@
 from login_case import login
 from get_invest_info_case import getInvestInfo
 from buy_product_case import buyProduct
+from pig_amount_to_base_amount import pigAmountToBaseAmount
 
 
 login()
@@ -11,5 +12,8 @@ login()
 getInvestInfo()
 # buy product
 buyProduct()
+# 摇宝
+pigAmountToBaseAmount()
+
 
 

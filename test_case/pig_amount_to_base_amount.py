@@ -4,19 +4,18 @@
 from interface_test_class import InterfaceTest
 
 
-def buyProduct():
-    # para_get()
-    para_path = r"../info/buyProduct_case_para.txt"
+def pigAmountToBaseAmount():
+    para_path = r"../info/pigAmountToBaseAmount_case_para.txt"
     getInvestInfo_obj = InterfaceTest(para_path)
-    getInvestInfo_obj.para_get(para_path=r"../info/buyProduct_case_para.txt", iterface_url='url_buyProduct')
+    getInvestInfo_obj.para_get(para_path=para_path, iterface_url='url_pigAmountToBaseAmount')
     values = getInvestInfo_obj.data_get()
     response = getInvestInfo_obj.data_post(values)
     data = response.read()  # <type 'str'>
     print data
-    file_save = r"../data/buyProduct"
+    file_save = r"../data/pigAmountToBaseAmount"
     getInvestInfo_obj.data_save(file_save, data)
     getInvestInfo_obj.pass_or_fail(file_save)
 
 
 if __name__ == '__main__':
-    buyProduct()
+    pigAmountToBaseAmount()
