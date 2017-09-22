@@ -37,3 +37,21 @@ class InterfaceTest:
                 print "%s PASS" % file_path.split("/")[2]
             else:
                 print "%s FAIL" % file_path.split("/")[2]
+
+    @staticmethod
+    def para_get(**kwargs):
+        with open(kwargs['para_path'], 'r') as f:
+            values = json.dumps(f.read())
+            data = eval(json.loads(values))
+        # get the loginToken
+        with open(r"../data/login", 'r') as f:
+            values = json.dumps(f.read())
+            dd = eval(json.loads(values))
+            data['loginToken'] = dd['data']['loginToken']
+        # get interface url
+        with open(r"../info/url", 'r') as f:
+            values = json.dumps(f.read())
+            d = eval(json.loads(values))
+            data['url'] = d[kwargs['iterface_url']]
+        with open(kwargs['para_path'], 'wb+') as f:
+            json.dump(data, f)

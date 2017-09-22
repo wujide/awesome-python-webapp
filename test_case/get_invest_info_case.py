@@ -6,9 +6,10 @@ from interface_test_class import InterfaceTest
 
 
 def getInvestInfo():
-    para_get()
+    # para_get()
     para_path = r"../info/getInvestInfo_case_para.txt"
     getInvestInfo_obj = InterfaceTest(para_path)
+    getInvestInfo_obj.para_get(para_path=r"../info/getInvestInfo_case_para.txt", iterface_url='url_getInvestInfo')
     values = getInvestInfo_obj.data_get()
     response = getInvestInfo_obj.data_post(values)
     data = response.read()  # <type 'str'>
@@ -23,28 +24,18 @@ def para_get():
     with open(r"../info/url", 'r') as f:
         values = json.dumps(f.read())
         d = eval(json.loads(values))
-        url_get_invest_info = d['url_getInvestInfo']
     # get the loginToken
     with open(r"../data/login", 'r') as f:
         values = json.dumps(f.read())
-        d = eval(json.loads(values))
-        loginToken = d['data']['loginToken']
-    data = {"loginToken": loginToken,
-            "url": url_get_invest_info}
-    # print data
+        dd = eval(json.loads(values))
+    with open(r"../info/getInvestInfo_case_para.txt", 'r') as f:
+        values = json.dumps(f.read())
+        data = eval(json.loads(values))
+        data['loginToken'] = dd['data']['loginToken']
+        data['url'] = d['url_getInvestInfo']
     # write to a file
     with open(r'../info/getInvestInfo_case_para.txt', 'wb+') as f:
         json.dump(data, f)
-
-
-def pass_or_fail():
-    with open(r"../data/getInvestInfo", 'r') as f:
-        values = json.dumps(f.read())
-        d = eval(json.loads(values))
-        if d['data']['investAmt'] and d['data']['inviteNum']:
-            print "getInvestInfo PASS"
-        else:
-            print "getInvestInfo FAIL"
 
 if __name__ == "__main__":
     # para_get()

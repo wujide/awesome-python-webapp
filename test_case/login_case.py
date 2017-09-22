@@ -24,14 +24,5 @@ def login():
     login_obj.pass_or_fail(file_save)
 
 
-def pass_or_fail():
-    with open(r"../data/login", 'r') as f:
-        values = json.dumps(f.read())
-        d = eval(json.loads(values))
-        if d['data']['loginToken']:
-            print "login PASS"
-        else:
-            print "login FAIL"
-
 if __name__ == "__main__":
     login()
