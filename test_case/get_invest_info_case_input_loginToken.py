@@ -14,11 +14,11 @@ def getInvestInfo():
     data = urllib.urlencode(values)
     req = urllib2.Request(values['url'])
     response = urllib2.urlopen(req, data)
-    print "type(response):", type(response)
+    # print "type(response):", type(response)
     dd = response.read()
-    print "type(dd):", type(dd)
-    print dd
+    # print "type(dd):", type(dd)
+    return dd
     #write_to_file(dd)
 
 if __name__ == "__main__":
-    getInvestInfo()
+    print getInvestInfo()

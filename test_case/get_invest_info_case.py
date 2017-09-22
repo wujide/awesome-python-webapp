@@ -13,10 +13,10 @@ def getInvestInfo():
     values = getInvestInfo_obj.data_get()
     response = getInvestInfo_obj.data_post(values)
     data = response.read()  # <type 'str'>
-    print data
     file_save = r"../data/getInvestInfo"
     getInvestInfo_obj.data_save(file_save, data)
     getInvestInfo_obj.pass_or_fail(file_save)
+    return data
 
 
 def para_get():
@@ -38,5 +38,4 @@ def para_get():
         json.dump(data, f)
 
 if __name__ == "__main__":
-    # para_get()
-    getInvestInfo()
+    print getInvestInfo()

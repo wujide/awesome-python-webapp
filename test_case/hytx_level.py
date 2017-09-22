@@ -11,11 +11,12 @@ def level():
     values = getInvestInfo_obj.data_get()
     response = getInvestInfo_obj.data_post(values)
     data = response.read()  # <type 'str'>
-    print data
+    # print data
     file_save = r"../data/hytx_level"
     getInvestInfo_obj.data_save(file_save, data)
     getInvestInfo_obj.pass_or_fail(file_save)
-
+    return data
 
 if __name__ == '__main__':
-    level()
+    print level()
+

@@ -18,11 +18,10 @@ def login():
     values = login_obj.data_get()  # <type 'dict'>
     response = login_obj.data_post(values)
     data = response.read()  # <type 'str'>
-    print data
     file_save = r'../data/login'
     login_obj.data_save(file_save, data)
     login_obj.pass_or_fail(file_save)
-
+    return data
 
 if __name__ == "__main__":
-    login()
+    print login()
