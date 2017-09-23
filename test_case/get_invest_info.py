@@ -8,15 +8,15 @@ from interface_test_class import InterfaceTest
 def getInvestInfo():
     # para_get()
     para_path = r"../info/getInvestInfo_para.txt"
-    getInvestInfo_obj = InterfaceTest(para_path)
+    obj = InterfaceTest(para_path)
     # get the latest loginToken and update to the para file
-    getInvestInfo_obj.para_get(para_path=para_path, iterface_url='url_getInvestInfo')
-    values = getInvestInfo_obj.data_get()
-    response = getInvestInfo_obj.data_post(values)
+    obj.para_get(para_path=para_path, iterface_url='url_getInvestInfo')
+    values = obj.data_get()
+    response = obj.data_post(values)
     data = response.read()  # <type 'str'>
     file_save = r"../data/getInvestInfo"
-    getInvestInfo_obj.data_save(file_save, data)
-    getInvestInfo_obj.pass_or_fail(file_save)
+    obj.data_save(file_save, data)
+    obj.pass_or_fail(file_save)
     return data
 
 
