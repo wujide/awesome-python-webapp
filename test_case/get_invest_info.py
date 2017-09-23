@@ -7,7 +7,7 @@ from interface_test_class import InterfaceTest
 
 def getInvestInfo():
     # para_get()
-    para_path = r"../info/getInvestInfo_case_para.txt"
+    para_path = r"../info/getInvestInfo_para.txt"
     getInvestInfo_obj = InterfaceTest(para_path)
     # get the latest loginToken and update to the para file
     getInvestInfo_obj.para_get(para_path=para_path, iterface_url='url_getInvestInfo')
@@ -29,13 +29,13 @@ def para_get():
     with open(r"../data/login", 'r') as f:
         values = json.dumps(f.read())
         dd = eval(json.loads(values))
-    with open(r"../info/getInvestInfo_case_para.txt", 'r') as f:
+    with open(r"../info/getInvestInfo_para.txt", 'r') as f:
         values = json.dumps(f.read())
         data = eval(json.loads(values))
         data['loginToken'] = dd['data']['loginToken']
         data['url'] = d['url_getInvestInfo']
     # write to a file
-    with open(r'../info/getInvestInfo_case_para.txt', 'wb+') as f:
+    with open(r'../info/getInvestInfo_para.txt', 'wb+') as f:
         json.dump(data, f)
 
 if __name__ == "__main__":

@@ -13,7 +13,7 @@ with open(r'../info/user_pwd', 'r') as f:
 
 def login():
     # 初始化login 实例
-    login_obj = InterfaceTest(r"../info/login_case_para.txt")
+    login_obj = InterfaceTest(r"../info/login_para.txt")
     # 获取参数
     values = login_obj.data_get()  # <type 'dict'>
     response = login_obj.data_post(values)

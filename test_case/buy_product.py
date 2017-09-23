@@ -6,9 +6,9 @@ from interface_test_class import InterfaceTest
 
 def buyProduct():
     # para_get()
-    para_path = r"../info/buyProduct_case_para.txt"
+    para_path = r"../info/buyProduct_para.txt"
     getInvestInfo_obj = InterfaceTest(para_path)
-    getInvestInfo_obj.para_get(para_path=r"../info/buyProduct_case_para.txt", iterface_url='url_buyProduct')
+    getInvestInfo_obj.para_get(para_path=r"../info/buyProduct_para.txt", iterface_url='url_buyProduct')
     values = getInvestInfo_obj.data_get()
     response = getInvestInfo_obj.data_post(values)
     data = response.read()  # <type 'str'>

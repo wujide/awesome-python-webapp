@@ -5,7 +5,7 @@ from interface_test_class import InterfaceTest
 
 
 def pigAmountToBaseAmount():
-    para_path = r"../info/pigAmountToBaseAmount_case_para.txt"
+    para_path = r"../info/pigAmountToBaseAmount_para.txt"
     getInvestInfo_obj = InterfaceTest(para_path)
     getInvestInfo_obj.para_get(para_path=para_path, iterface_url='url_pigAmountToBaseAmount')
     values = getInvestInfo_obj.data_get()
