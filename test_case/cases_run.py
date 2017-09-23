@@ -7,8 +7,8 @@ from buy_product import buyProduct
 from pig_amount_to_base_amount import pigAmountToBaseAmount
 from hytx_personal import personal
 from hytx_level import level
-from test_case import lcds_investcount
-from test_case.lcds_simple_info import lcds_simpleinfo
+from lcds_simple_info import lcds_simpleinfo
+from lcds_investcount import lcds_investcount
 
 login()
 # 0 元白拿获取投资值和邀请值
