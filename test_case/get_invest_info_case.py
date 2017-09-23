@@ -9,6 +9,7 @@ def getInvestInfo():
     # para_get()
     para_path = r"../info/getInvestInfo_case_para.txt"
     getInvestInfo_obj = InterfaceTest(para_path)
+    # get the latest loginToken and update to the para file
     getInvestInfo_obj.para_get(para_path=para_path, iterface_url='url_getInvestInfo')
     values = getInvestInfo_obj.data_get()
     response = getInvestInfo_obj.data_post(values)
