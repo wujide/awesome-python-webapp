@@ -31,5 +31,5 @@ def ssh_cmd(ip, port, cmd, user, pwd):
     return result
 
 
-if __name__ == '__main__ ':
+if __name__ == '__main__':
     ssh_cmd(ip1, port1, cmd1, user1, pwd1)
