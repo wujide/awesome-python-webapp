@@ -11,7 +11,7 @@ with open(r"../info/server", 'r') as f:
     port1 = d['port']
     user1 = d['user']
     pwd1 = d['pwd']
-    cmd1 = r"cat /ywdata/tomcat7-appInterface/logs/catalina.2017-09-25.log"
+    cmd1 = r"tail /ywdata/tomcat7-appInterface/logs/catalina.out|grep 13800138048"
 
 print '''------connecting to %s -------- ''' % ip1
 
