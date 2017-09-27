@@ -1,11 +1,18 @@
 # coding=utf-8
 # __author__='Administrator'
 import re
-
+phone_num =13800138048
 
 reg = r'&captcha=(\d{4})&captCode=(.*?)&isRegisted=(\d)'
-reg = r'phoneNum=13800138048&captcha=(.*?)&captCode=(.*?)&isRegisted=(\d)'
-result = '[http-bio-8380-exec-10]-2017-09-26 21:39:23,741  INFO VerifCodeServiceImpl:72 - phoneNum=13800138048&captcha=6130&captCode=57fd2f48c9a345708d0f6d1e876ad27d&isRegisted=1'
-data = re.findall(reg, result)
-print "data:", data[0][0]
+reg2 = r'phoneNum=13800138048&captcha=(.*?)&captCode=(.*?)&isRegisted=(\d)'
+pattern = r'发送验证码执行完毕phoneNum=\\['+'13800138048'+']'+ r'verifCode='+r'[+(\d?)]'
+pattern1 = r"发送验证码执行完毕phoneNum=\[13800138048\]verifCode=[(\d?)]"
+pattern2 = r"发送验证码执行完毕phoneNum=\[13800138048\]verifCode=\[(.*?)\]"
+pattern22 = r"发送验证码执行完毕phoneNum=\[" + str(phone_num) + r"\]" + r"verifCode=\[(.*?)\]"
+
+pattern3 = "发送验证码执行完毕phoneNum=\[" + str(phone_num) + "\]" + "verifCode=\[(.*?)\]"
+print pattern3
+result = '[http-bio-8380-exec-7]-2017-09-27 16:13:47,531  INFO VerifCodeServiceImpl:175 - 发送验证码执行完毕phoneNum=[13800138048]verifCode=[8696]'
+data = re.findall(pattern3, result)
+print "data:", data
 

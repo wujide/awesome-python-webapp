@@ -33,7 +33,7 @@ def verifCode_get(phone_num):
     cmd_verif_code = r'cat /ywdata/tomcat7-appInterface/logs/catalina.out |grep "发送验证码执行完毕"| tail -n 1'
     data_verif_code = server_log_get(cmd_verif_code)
     print "data_verif_code:", data_verif_code
-    pattern = r'发送验证码执行完毕phoneNum=[' + str(phone_num) + r']' + r'verifCode=[(\d?)]'
+    pattern = r"发送验证码执行完毕phoneNum=\[" + str(phone_num) + r"\]" + r"verifCode=\[(.*?)\]"
     log_data_verif_code = log_read(pattern, data_verif_code)
     print "log_data_verif_code:", log_data_verif_code
     return log_data_verif_code
