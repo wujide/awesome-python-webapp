@@ -36,7 +36,7 @@ def verifCode_get(phone_num):
     pattern = r"发送验证码执行完毕phoneNum=\[" + str(phone_num) + r"\]" + r"verifCode=\[(.*?)\]"
     log_data_verif_code = log_read(pattern, data_verif_code)
     print "log_data_verif_code:", log_data_verif_code
-    return log_data_verif_code
+    return log_data_verif_code[0]
 
 
 if __name__ == "__main__":
